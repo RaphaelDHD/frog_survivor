@@ -9,15 +9,32 @@ public class EnemyManager : MonoBehaviour
     public float spawnHeight = 1.0f;
     public GameObject spawnObject = null;
     public GameObject player = null;
+    public int maxEnemies = 5;
 
     private int enemyCount = 0;
+
+    private static EnemyManager _instance;
+    public static EnemyManager Instance { get { return _instance; } }
+
+
 
 
 
     void Start()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
         StartCoroutine(SpawnObject());
         spawnBounds = spawner.GetComponent<BoxCollider>();
+        
     }
 
     private void Update()
@@ -31,7 +48,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(randSpawnTime);
 
 
-        while (enemyCount >= 5)
+        while (enemyCount >= maxEnemies)
         {
             yield return new WaitForSeconds(1.0f);
         }
@@ -72,4 +89,11 @@ public class EnemyManager : MonoBehaviour
 
         return new Vector3(xSpawn, spawnHeight, zSpawn);
     }
+
+
+    public void EnnemyKilled()
+    {
+        enemyCount--;
+    }
+
 }

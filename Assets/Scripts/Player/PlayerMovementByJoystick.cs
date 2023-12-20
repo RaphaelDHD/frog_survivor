@@ -17,5 +17,10 @@ public class PlayerMovementByJoystick : MonoBehaviour
             inputMovement.x * speed,
             body.velocity.y,
             inputMovement.y * speed);
+        if (inputMovement == Vector2.zero)
+        {
+            return;
+        }
+        body.rotation = Quaternion.LookRotation(body.velocity);
     }
 }

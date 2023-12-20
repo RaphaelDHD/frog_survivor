@@ -6,31 +6,35 @@ public class PlayerManager : MonoBehaviour
 {
     public GameObject player = null;
 
+    public GameObject attackPrefab = null;
+    public GameObject attackCritickPrefab = null;
 
     public int experience = 0;
-    //private int experienceToReachNextLevel= 100;
+    private int experienceToReachNextLevel = 100;
     public int level = 1;
     public int maxLevel = 100;
 
     public int health = 100;
     public int maxHealth = 100;
 
-    public int attack = 1;
-    public int attackSpeed = 1;
+    public int damage = 1;
+    public float attackSpeed = 1f;
     public int attackAngle = 45;
+
+    public float range = 100f;
 
     public int criticalChance = 1;
 
     public int knockback = 1;
 
     public int defense = 0;
-    
+
     public int speed = 20;
 
     // make singleton
     private static PlayerManager _instance;
     public static PlayerManager Instance { get { return _instance; } }
-    
+
 
 
     void Start()
@@ -57,6 +61,39 @@ public class PlayerManager : MonoBehaviour
             Destroy(player);
         }
     }
-    
+
+    public void gainExperience(int exp)
+    {
+        experience += exp;
+
+        if (experience >= experienceToReachNextLevel)
+        {
+            levelUp();
+        }
+    }
+
+    public void levelUp()
+    {
+        if (level < maxLevel)
+        {
+            level++;
+            experience = 0;
+            experienceToReachNextLevel = experienceToReachNextLevel * 2;
+        }
+    }
+
+    public void spawnAttackPrefab()
+    {
+        Vector3 direction = player.transform.forward;
+        Vector3 position = player.transform.position;
+        Quaternion rotation = player.transform.rotation;
+        GameObject attack = Instantiate(attackPrefab, position, rotation);
+        Vector3 offset = direction * range;
+        attack.transform.position = position + offset;
+        attack.transform.localScale = new Vector3(range,range,range);
+    }
+
+
+
 
 }

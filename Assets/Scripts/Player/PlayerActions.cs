@@ -1,13 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
     public Rigidbody player = null;
     private bool isCooldownActive = false;
-
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -27,4 +24,22 @@ public class PlayerActions : MonoBehaviour
         isCooldownActive = false;
     }
 
+    private void Start()
+    {
+        StartCoroutine(AttackCoroutine());
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        while (true)
+        {
+            attack();
+            yield return new WaitForSeconds(PlayerManager.Instance.attackSpeed);
+        }
+    }
+
+    private void attack()
+    {
+        PlayerManager.Instance.spawnAttackPrefab();
+    }
 }

@@ -332,6 +332,7 @@ MonoBehaviour:
   spawnObject: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
     type: 3}
   player: {fileID: 777872011}
+  maxEnemies: 5
 --- !u!4 &472542233
 Transform:
   m_ObjectHideFlags: 0
@@ -360,15 +361,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fbe5d452e31cd49b10f6c5c6fdde2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 777872011}
+  attackPrefab: {fileID: 3153472991145048103, guid: 56a5b01fa920cf34985cfede7f804e1a,
+    type: 3}
+  attackCritickPrefab: {fileID: 1171201465392465800, guid: dcc268a355c4bcf44adc2ef33234ea1d,
+    type: 3}
   experience: 0
   level: 1
   maxLevel: 100
   health: 100
   maxHealth: 100
-  attack: 1
+  damage: 1
   attackSpeed: 1
   attackAngle: 45
+  range: 3
   criticalChance: 1
   knockback: 1
   defense: 0
@@ -1115,7 +1121,7 @@ Transform:
   m_GameObject: {fileID: 1960770534}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5110919, y: 0.000000030396198, z: -0.000000018074203, w: 0.8595261}
-  m_LocalPosition: {x: -0.00000033777516, y: 162.78595, z: -79.7757}
+  m_LocalPosition: {x: 0, y: 178.2, z: -79.7757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1190,8 +1196,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 777872012}
-  m_Follow: {fileID: 777872012}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -1220,7 +1226,7 @@ Transform:
   m_GameObject: {fileID: 2079506134}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5110919, y: 0.000000030396198, z: -0.000000018074203, w: 0.8595261}
-  m_LocalPosition: {x: -0.00000033777516, y: 162.78595, z: -79.7757}
+  m_LocalPosition: {x: 0, y: 178.2, z: -79.7757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
