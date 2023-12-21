@@ -10,7 +10,16 @@ public class PlayerActions : MonoBehaviour
     private bool isCooldownActive = false;
     private bool canAttack = true;
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy") && !isCooldownActive)
+        {
+            PlayerManager.Instance.takeDamage();
+            StartCoroutine(Cooldown());
+        }
+    } */
+
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy") && !isCooldownActive)
         {
@@ -18,6 +27,7 @@ public class PlayerActions : MonoBehaviour
             StartCoroutine(Cooldown());
         }
     }
+
 
     private IEnumerator Cooldown()
     {
