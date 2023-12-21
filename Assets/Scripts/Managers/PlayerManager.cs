@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject attackPrefab = null;
     public GameObject attackCritickPrefab = null;
 
+    public Animator animator = null;
+
     public int experience = 0;
     private int experienceToReachNextLevel = 100;
     public int level = 1;
@@ -37,7 +39,7 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         if (_instance != null && _instance != this)
         {
@@ -54,12 +56,21 @@ public class PlayerManager : MonoBehaviour
     public void takeDamage()
     {
         health -= 10;
+        setAnimation("IsTakingDamage", true);
 
         if (health <= 0)
         {
             Debug.Log("Player died!");
             Destroy(player);
         }
+
+        StartCoroutine(ResetTakingDamageAnimation());
+    }
+
+    private IEnumerator ResetTakingDamageAnimation()
+    {
+        yield return new WaitForSeconds(1.0f); 
+        setAnimation("IsTakingDamage", false);
     }
 
     public void gainExperience(int exp)
@@ -93,7 +104,10 @@ public class PlayerManager : MonoBehaviour
         attack.transform.localScale = new Vector3(range,range,range);
     }
 
-
+    public void setAnimation(string animationName, bool value)
+    {
+        animator.SetBool(animationName, value);
+    }
 
 
 }

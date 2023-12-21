@@ -33,13 +33,25 @@ public class PlayerActions : MonoBehaviour
     {
         while (true)
         {
+            PlayerManager.Instance.setAnimation("IsAttacking", true);
+            yield return new WaitForSeconds(0.40f); // Adjust the duration as needed
             attack();
-            yield return new WaitForSeconds(PlayerManager.Instance.attackSpeed);
+
+            yield return new WaitForSeconds(0.60f); // Adjust the duration as needed
+
+            // Set the "IsAttacking" animation to false
+            PlayerManager.Instance.setAnimation("IsAttacking", false);
+
+            // Wait for the remaining attackSpeed duration
+            yield return new WaitForSeconds(PlayerManager.Instance.attackSpeed - 0.1f);
         }
     }
 
     private void attack()
     {
-        PlayerManager.Instance.spawnAttackPrefab();
+        if (PlayerManager.Instance.attackPrefab != null)
+        {
+            PlayerManager.Instance.spawnAttackPrefab();
+        }
     }
 }

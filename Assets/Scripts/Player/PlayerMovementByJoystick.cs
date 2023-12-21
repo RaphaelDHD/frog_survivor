@@ -7,8 +7,7 @@ public class PlayerMovementByJoystick : MonoBehaviour
     public Joystick joystick = null;
     public float speed = 10.0f;
     public Rigidbody body = null;
-
-
+    
     void Update()
     {
         Vector2 inputMovement = joystick.Direction;
@@ -19,8 +18,10 @@ public class PlayerMovementByJoystick : MonoBehaviour
             inputMovement.y * speed);
         if (inputMovement == Vector2.zero)
         {
+            PlayerManager.Instance.animator.SetBool("IsWalking", false);
             return;
         }
+        PlayerManager.Instance.animator.SetBool("IsWalking", true);
         body.rotation = Quaternion.LookRotation(body.velocity);
     }
 }
