@@ -93,16 +93,26 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void spawnAttackPrefab()
+    public void spawnAttackPrefab(GameObject enemy)
     {
-        Vector3 direction = player.transform.forward;
+        if (enemy == null || attackPrefab == null)
+        {
+            return; // Ensure enemy and attackPrefab are valid
+        }
+
+        Vector3 direction = enemy.transform.position - player.transform.position;
+        direction.y = 1f; // Keep the attack level with the ground, remove if not needed
         Vector3 position = player.transform.position;
-        Quaternion rotation = player.transform.rotation;
+        Quaternion rotation = Quaternion.LookRotation(direction.normalized);
+
         GameObject attack = Instantiate(attackPrefab, position, rotation);
-        Vector3 offset = direction * range;
+        Vector3 offset = direction.normalized * range * 0.5f; // Adjust the multiplier based on your preference
         attack.transform.position = position + offset;
-        attack.transform.localScale = new Vector3(range,range,range);
+        float attackSize = range * 0.25f; // Adjust the multiplier based on your preference
+        attack.transform.localScale = new Vector3(attackSize, 1, attackSize);
     }
+
+
 
     public void setAnimation(string animationName, bool value)
     {
