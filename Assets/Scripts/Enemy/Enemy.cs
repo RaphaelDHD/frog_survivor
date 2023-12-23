@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
     public int Health = 100;
     public int Damage = 10;
+    public GameObject BloodPrefab;
     
 
 
@@ -35,6 +36,11 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         EnemyManager.Instance.EnnemyKilled();
+        Quaternion enemyRotation = gameObject.transform.rotation;
+        Quaternion bloodRotation = enemyRotation * Quaternion.Euler(0, 90, 0);
+        Vector3 bloodPosition = gameObject.transform.position;
+        bloodPosition.y -= 1.4f;
+        Instantiate(BloodPrefab, bloodPosition, bloodRotation);
         Destroy(gameObject);
     }
 

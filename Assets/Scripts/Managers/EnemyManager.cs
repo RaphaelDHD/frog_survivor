@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject spawner = null;
     private BoxCollider spawnBounds = null;
     public Vector2 spawnTime = Vector2.zero;
-    public float spawnHeight = 1.0f;
+    public float spawnHeight = 1.5f;
     public GameObject spawnObject = null;
     public GameObject player = null;
     public int maxEnemies = 5;

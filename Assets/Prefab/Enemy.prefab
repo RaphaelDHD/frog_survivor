@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Damage: 10
+  BloodPrefab: {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
 --- !u!65 &1714949017868024945
 BoxCollider:
   m_ObjectHideFlags: 0

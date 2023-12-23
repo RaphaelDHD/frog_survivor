@@ -513,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1511067590}
   spawnTime: {x: 0.5, y: 1}
-  spawnHeight: 1
+  spawnHeight: 1.5
   spawnObject: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
     type: 3}
   player: {fileID: 1874428994}
