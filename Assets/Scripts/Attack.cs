@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 1f) ;
+        Destroy(gameObject, 0.3f) ;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +18,7 @@ public class Attack : MonoBehaviour
         if (enemy != null && !collideEnemies.Contains(enemy))
         {
             collideEnemies.Add(enemy);
-            enemy.TakeDamage(10);
+            enemy.TakeDamage(PlayerManager.Instance.damage);
         }
     }
 }

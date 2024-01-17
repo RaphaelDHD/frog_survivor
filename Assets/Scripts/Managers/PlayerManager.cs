@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     public int health = 100;
     public int maxHealth = 100;
 
-    public int damage = 1;
+    public int damage = 10;
     public float attackSpeed = 1f;
     public int attackAngle = 45;
 
