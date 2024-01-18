@@ -1,5 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -7,16 +11,19 @@ public class EnemyManager : MonoBehaviour
     private BoxCollider spawnBounds = null;
     public Vector2 spawnTime = Vector2.zero;
     public float spawnHeight = 1.5f;
-    public GameObject spawnObject = null;
     public GameObject player = null;
-    public int maxEnemies = 5;
 
+    // Wave system
+    public List<EnemyWave> enemies = new List<EnemyWave>();
+
+    private int currWave = 1;
+    private int waveValue = 10;
     private int enemyCount = 0;
+    private bool isWaveInProgress = false;
 
     private static EnemyManager _instance;
     public static EnemyManager Instance { get { return _instance; } }
-
-
+    
 
 
 
@@ -32,8 +39,9 @@ public class EnemyManager : MonoBehaviour
 
             DontDestroyOnLoad(this.gameObject);
         }
-        StartCoroutine(SpawnObject());
         spawnBounds = spawner.GetComponent<BoxCollider>();
+        StartCoroutine(SpawnObject());
+        StartCoroutine(ManageWaves());
         
     }
 
@@ -42,21 +50,48 @@ public class EnemyManager : MonoBehaviour
         spawner.transform.position = player.transform.position;
     }
 
+    private void newWave()
+    {
+        currWave++;
+        waveValue = currWave * 10;
+        StartCoroutine(SpawnObject());
+    }
+
+    private IEnumerator ManageWaves()
+    {
+        while (true) // Infinite loop to constantly check the end of the wave
+        {
+            yield return new WaitForSeconds(3f); // Adjust the interval based on your needs
+
+            if (!isWaveInProgress && enemyCount == 0 && waveValue <= 0)
+            {
+                // End of the wave condition is met
+                Debug.Log("End of Wave " + currWave);
+                newWave();
+            }
+        }
+    }
+
     private IEnumerator SpawnObject()
     {
+        isWaveInProgress = true;
         float randSpawnTime = Random.Range(spawnTime.x, spawnTime.y);
         yield return new WaitForSeconds(randSpawnTime);
 
-
-        while (enemyCount >= maxEnemies)
-        {
-            yield return new WaitForSeconds(1.0f);
-        }
-
         Vector3 spawnPos = GetRandomEdgePosition();
-        Instantiate(spawnObject, spawnPos, Quaternion.identity);
+        GameObject enemy = getEnemyToSpawn().enemyPrefab;
+        Instantiate(enemy, spawnPos, Quaternion.identity);
         enemyCount++;
-        StartCoroutine(SpawnObject());
+        waveValue -= getEnemyToSpawn().cost;
+        Debug.Log("Wave value :" + waveValue);
+
+        if (waveValue > 0)
+        {
+            StartCoroutine(SpawnObject());
+        } else
+        {
+            isWaveInProgress = false;
+        }
     }
 
 
@@ -90,10 +125,34 @@ public class EnemyManager : MonoBehaviour
         return new Vector3(xSpawn, spawnHeight, zSpawn);
     }
 
+    public EnemyWave getEnemyToSpawn()
+    {
+        List<EnemyWave> genereableEnemies = new List<EnemyWave>();
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (waveValue - enemies[i].cost >= 0)
+            {
+                genereableEnemies.Add(enemies[i]);
+            }
+        }
+        int randomIndex = Random.Range(0, genereableEnemies.Count);
+        return genereableEnemies[randomIndex];
+    } 
 
     public void EnnemyKilled()
     {
         enemyCount--;
+        if (enemyCount == 0 && waveValue <= 0)
+        {
+            isWaveInProgress = false; // Set the flag to false when the wave ends
+        }
     }
 
+}
+
+[System.Serializable]
+public class EnemyWave
+{
+    public GameObject enemyPrefab;
+    public int cost;
 }

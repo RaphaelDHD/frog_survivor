@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2916961895184199297}
   - component: {fileID: 1714949017868024945}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy level 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,6 +171,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 9e33ce068342a4e439e980e0417dcecc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 08cb16f779c18ee42af5e865b8ae93f8, type: 2}
+    - target: {fileID: -7635826562936255635, guid: 9e33ce068342a4e439e980e0417dcecc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cba8a6c09d7e404098c6d69be77b1c8, type: 2}
     - target: {fileID: 919132149155446097, guid: 9e33ce068342a4e439e980e0417dcecc,
         type: 3}
       propertyPath: m_Name

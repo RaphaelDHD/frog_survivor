@@ -3,7 +3,17 @@ guid: c5ab43fe1884ded4995ba15b98f54efd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Frog_Main
+    second: {fileID: 2100000, guid: 4e85e0eca52ef4a459e4c15b3d8211e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Frog_Secondary
+    second: {fileID: 2100000, guid: 46b47b667d8cf6e4cb2db662b88f99da, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
