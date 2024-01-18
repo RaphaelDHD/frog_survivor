@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b94291861447f43b1bab9507553ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 20
+  followSpeed: 25
   moveBody: {fileID: 6418643563144024071}
 --- !u!54 &6418643563144024071
 Rigidbody:
@@ -89,9 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a46575303d90540b474ba617998b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Damage: 10
+  Health: 30
+  Damage: 20
   BloodPrefab: {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  HitPrefab: {fileID: 1758473627833946668, guid: 2a75fb05db2ebdc4495f9639b97cbed0,
+    type: 3}
 --- !u!65 &1714949017868024945
 BoxCollider:
   m_ObjectHideFlags: 0

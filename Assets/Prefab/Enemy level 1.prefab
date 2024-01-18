@@ -92,6 +92,8 @@ MonoBehaviour:
   Health: 10
   Damage: 10
   BloodPrefab: {fileID: 100000, guid: 43dd1ba2a5dde844eb01240da13ab96b, type: 3}
+  HitPrefab: {fileID: 1758473627833946668, guid: 2a75fb05db2ebdc4495f9639b97cbed0,
+    type: 3}
 --- !u!65 &1714949017868024945
 BoxCollider:
   m_ObjectHideFlags: 0
