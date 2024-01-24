@@ -512,12 +512,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1511067590}
-  spawnTime: {x: 0.5, y: 1}
+  spawnTime: {x: 1, y: 2}
   spawnHeight: 1.5
-  spawnObject: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
-    type: 3}
   player: {fileID: 1874428994}
-  maxEnemies: 500
+  enemies:
+  - enemyPrefab: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
+      type: 3}
+    cost: 1
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 06c05a303df57bc44947e6228e06f623,
+      type: 3}
+    cost: 2
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 0d5ec10465c74c64c951fe36f7c2a201,
+      type: 3}
+    cost: 3
 --- !u!4 &984860433
 Transform:
   m_ObjectHideFlags: 0
