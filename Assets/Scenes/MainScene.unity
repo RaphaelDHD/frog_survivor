@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 984860433}
   - component: {fileID: 984860432}
   - component: {fileID: 984860431}
+  - component: {fileID: 984860434}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -541,6 +542,20 @@ Transform:
   - {fileID: 1511067592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984860434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984860430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959a9a1934156274d811174d3d381c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePrefab: {fileID: 2993772359274525459, guid: c246a3d5ad968394f85d04a602bdee89,
+    type: 3}
 --- !u!65 &1443353569 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4326271034513820708, guid: 1d4f7d5018db1cc4ba2f16c0d91f8760,

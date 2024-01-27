@@ -67,6 +67,12 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetTakingDamageAnimation());
     }
 
+    public void recoverLife()
+    {
+        if (health < 80) health += 20;
+        else health = 100;
+    }
+
     private IEnumerator ResetTakingDamageAnimation()
     {
         yield return new WaitForSeconds(1.0f); 
