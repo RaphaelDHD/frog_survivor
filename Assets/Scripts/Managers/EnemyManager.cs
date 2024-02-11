@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +13,11 @@ public class EnemyManager : MonoBehaviour
     public Vector2 spawnTime = Vector2.zero;
     public float spawnHeight = 1.5f;
     public GameObject player = null;
+
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI ennemyText;
+    private int enemyKilled = 0;
+
 
     // Wave system
     public List<EnemyWave> enemies = new List<EnemyWave>();
@@ -54,6 +60,7 @@ public class EnemyManager : MonoBehaviour
     {
         currWave++;
         waveValue = currWave * 10;
+        waveText.text = "Wave : " + currWave;
         StartCoroutine(SpawnObject());
     }
 
@@ -140,6 +147,8 @@ public class EnemyManager : MonoBehaviour
     public void EnnemyKilled()
     {
         enemyCount--;
+        enemyKilled++;
+        ennemyText.text = "Ennemy killed : " + enemyKilled;
         PlayerManager.Instance.gainExperience(enemyCount * 10);
         if (enemyCount == 0 && waveValue <= 0)
         {
