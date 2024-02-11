@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     public Image ExperienceSlider;
     public TextMeshProUGUI ExperienceText;
 
+    public GameObject deadMenu;
+
     public Animator animator = null;
 
     public int experience = 0;
@@ -73,7 +75,6 @@ public class PlayerManager : MonoBehaviour
         ExperienceSlider.type = Image.Type.Filled;
         ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
 
-
     }
 
 
@@ -87,11 +88,19 @@ public class PlayerManager : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(player);
+            Death();
         }
 
         StartCoroutine(ResetTakingDamageAnimation());
     }
+
+    public void Death()
+    {
+        EnemyManager.Instance.killAllEnemy();
+        deadMenu.SetActive(true);
+        Destroy(player);
+    }
+
 
     private IEnumerator ResetTakingDamageAnimation()
     {

@@ -53,6 +53,11 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        // check if the player is dead
+        if (player == null)
+        {
+            return;
+        }
         spawner.transform.position = player.transform.position;
     }
 
@@ -156,6 +161,14 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    public void killAllEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+    }
 }
 
 [System.Serializable]
