@@ -52,7 +52,7 @@ public class ObjectManager : MonoBehaviour
         // Définition de la position d'apparition
         Vector3 randomPositionAppearance = new Vector3(
             playerObject.transform.position.x + positionX,
-            10.0f,
+            9.0f,
             playerObject.transform.position.z + positionZ
         );
 
