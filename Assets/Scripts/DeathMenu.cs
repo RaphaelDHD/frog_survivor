@@ -9,13 +9,35 @@ public class DeathMenu : MonoBehaviour
     public TextMeshProUGUI DeathMenuText;
     public float fadeInDuration = 1f; // Durée de l'animation de fondu
 
+    public Button restartButton;
+    public Button quitButton;
+
+
     void Start()
     {
         DeathMenuImage.gameObject.SetActive(false);
         DeathMenuText.gameObject.SetActive(false);
         StartCoroutine(FadeInElements());
 
+        restartButton.onClick.AddListener(RestartGame);
+        quitButton.onClick.AddListener(QuitGame);
+
     }
+
+    void RestartGame()
+    {
+        Destroy(PlayerManager.Instance);
+        Destroy(EnemyManager.Instance);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+    }
+
+    void QuitGame()
+    {
+        Destroy(PlayerManager.Instance);
+        Destroy(EnemyManager.Instance);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+    }
+
 
 
     IEnumerator FadeInElements()

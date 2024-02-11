@@ -1530,6 +1530,8 @@ MonoBehaviour:
   DeathMenuImage: {fileID: 1519881264}
   DeathMenuText: {fileID: 847546904}
   fadeInDuration: 1
+  restartButton: {fileID: 792468859}
+  quitButton: {fileID: 2041555813}
 --- !u!65 &1443353569 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 4326271034513820708, guid: 1d4f7d5018db1cc4ba2f16c0d91f8760,
