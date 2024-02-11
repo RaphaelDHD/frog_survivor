@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GroundGeneratorScene.unity
     guid: 798460df0133d4a47993b1823120e97e
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: c850ee8c3b14cc8459e7e186857cf567
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
+      guid: da35ad4d89603914b9a68e546d113815, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f8b0ff0ac93fcfd4f9c573aee7b58d28,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 84027812d1ee9ba4b97cc56b43cfb26b, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 473fee43c154bf641b4ec535a44c1978, type: 2}

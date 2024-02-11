@@ -1,19 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Enemy : MonoBehaviour
 {
-
-    public int Health = 100;
+    public int maxHealth = 10;
+    private int Health = 0;
     public int Damage = 10;
     public GameObject BloodPrefab;
     public GameObject HitPrefab;
+
+    public Image healthSlider;
+    public Image background;
+    private Camera _cam;
+
+    public void Start()
+    {
+        Health = maxHealth;
+        _cam = Camera.main;
+        healthSlider.type = Image.Type.Filled;
+    }
+
+
+    public void Update()
+    {
+        // look at the camera
+        background.transform.rotation = Quaternion.LookRotation(background.transform.position - _cam.transform.position);
+    }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
         Instantiate(HitPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Debug.Log("Health is " + Health + ".");
+        float fillAmount = ((float)Health / maxHealth);
+        Debug.Log(fillAmount.ToString());
+
+        healthSlider.fillAmount = fillAmount;
+        Debug.Log("Fill amount is " + healthSlider.fillAmount + ".");
+
+
         if (Health <= 0)
         {
             Die();
