@@ -12,6 +12,10 @@ public class PlayerManager : MonoBehaviour
     public Image healthContainer;
     public Image healthSlider;
 
+    public Image ExperienceContainer;
+    public Image ExperienceSlider;
+
+
     public Animator animator = null;
 
     public int experience = 0;
@@ -62,6 +66,13 @@ public class PlayerManager : MonoBehaviour
         healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth * 5, healthSlider.rectTransform.sizeDelta.y);
         healthSlider.type = Image.Type.Filled;
         healthSlider.fillAmount = ((float)health / maxHealth);
+
+        ExperienceContainer.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceContainer.rectTransform.sizeDelta.y);
+        ExperienceSlider.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceSlider.rectTransform.sizeDelta.y);
+        ExperienceSlider.type = Image.Type.Filled;
+        ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
+
+
     }
 
 
@@ -90,6 +101,7 @@ public class PlayerManager : MonoBehaviour
     public void gainExperience(int exp)
     {
         experience += exp;
+        ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
 
         if (experience >= experienceToReachNextLevel)
         {
@@ -99,6 +111,10 @@ public class PlayerManager : MonoBehaviour
 
     public void levelUp()
     {
+        ExperienceContainer.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceContainer.rectTransform.sizeDelta.y);
+        ExperienceSlider.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceSlider.rectTransform.sizeDelta.y);
+        ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
+
         if (level < maxLevel)
         {
             level++;

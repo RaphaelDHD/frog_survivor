@@ -142,6 +142,7 @@ public class EnemyManager : MonoBehaviour
     public void EnnemyKilled()
     {
         enemyCount--;
+        PlayerManager.Instance.gainExperience(enemyCount * 2);
         if (enemyCount == 0 && waveValue <= 0)
         {
             isWaveInProgress = false; // Set the flag to false when the wave ends
