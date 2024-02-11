@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,6 +8,9 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject attackPrefab = null;
     public GameObject attackCritickPrefab = null;
+
+    public Image healthContainer;
+    public Image healthSlider;
 
     public Animator animator = null;
 
@@ -53,14 +56,25 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        healthContainer.rectTransform.sizeDelta = new Vector2(maxHealth * 5, healthContainer.rectTransform.sizeDelta.y);
+        healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth * 5, healthSlider.rectTransform.sizeDelta.y);
+        healthSlider.type = Image.Type.Filled;
+        healthSlider.fillAmount = ((float)health / maxHealth);
+    }
+
+
     public void takeDamage()
     {
         health -= 10;
         setAnimation("IsTakingDamage", true);
 
+        healthSlider.fillAmount = ((float)health / maxHealth);
+        
+
         if (health <= 0)
         {
-            Debug.Log("Player died!");
             Destroy(player);
         }
 
