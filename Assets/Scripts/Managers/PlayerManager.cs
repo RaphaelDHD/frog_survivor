@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     public Image ExperienceContainer;
     public Image ExperienceSlider;
-
+    public TextMeshProUGUI ExperienceText;
 
     public Animator animator = null;
 
@@ -62,8 +63,8 @@ public class PlayerManager : MonoBehaviour
 
     public void Start()
     {
-        healthContainer.rectTransform.sizeDelta = new Vector2(maxHealth * 5, healthContainer.rectTransform.sizeDelta.y);
-        healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth * 5, healthSlider.rectTransform.sizeDelta.y);
+        healthContainer.rectTransform.sizeDelta = new Vector2(maxHealth, healthContainer.rectTransform.sizeDelta.y);
+        healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth, healthSlider.rectTransform.sizeDelta.y);
         healthSlider.type = Image.Type.Filled;
         healthSlider.fillAmount = ((float)health / maxHealth);
 
@@ -111,15 +112,14 @@ public class PlayerManager : MonoBehaviour
 
     public void levelUp()
     {
-        ExperienceContainer.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceContainer.rectTransform.sizeDelta.y);
-        ExperienceSlider.rectTransform.sizeDelta = new Vector2(experienceToReachNextLevel * 5, ExperienceSlider.rectTransform.sizeDelta.y);
-        ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
-
         if (level < maxLevel)
         {
             level++;
             experience = 0;
             experienceToReachNextLevel = experienceToReachNextLevel * 2;
+            ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
+
+            ExperienceText.text = "Level : " + level;
         }
     }
 

@@ -66,7 +66,6 @@ public class EnemyManager : MonoBehaviour
             if (!isWaveInProgress && enemyCount == 0 && waveValue <= 0)
             {
                 // End of the wave condition is met
-                Debug.Log("End of Wave " + currWave);
                 newWave();
             }
         }
@@ -83,7 +82,6 @@ public class EnemyManager : MonoBehaviour
         Instantiate(enemy, spawnPos, Quaternion.identity);
         enemyCount++;
         waveValue -= getEnemyToSpawn().cost;
-        Debug.Log("Wave value :" + waveValue);
 
         if (waveValue > 0)
         {
@@ -142,7 +140,7 @@ public class EnemyManager : MonoBehaviour
     public void EnnemyKilled()
     {
         enemyCount--;
-        PlayerManager.Instance.gainExperience(enemyCount * 2);
+        PlayerManager.Instance.gainExperience(enemyCount * 10);
         if (enemyCount == 0 && waveValue <= 0)
         {
             isWaveInProgress = false; // Set the flag to false when the wave ends

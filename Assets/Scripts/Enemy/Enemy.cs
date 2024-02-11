@@ -32,12 +32,9 @@ public class Enemy : MonoBehaviour
     {
         Health -= damage;
         Instantiate(HitPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Debug.Log("Health is " + Health + ".");
         float fillAmount = ((float)Health / maxHealth);
-        Debug.Log(fillAmount.ToString());
 
         healthSlider.fillAmount = fillAmount;
-        Debug.Log("Fill amount is " + healthSlider.fillAmount + ".");
 
 
         if (Health <= 0)

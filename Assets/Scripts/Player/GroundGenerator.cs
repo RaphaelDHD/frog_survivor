@@ -31,13 +31,10 @@ public class GroundPlacer : MonoBehaviour
     RaycastHit hit;
     if (Physics.Raycast(transform.position, Vector3.down, out hit))
     {
-        Debug.Log("raycast hit");
-        Debug.Log($"{hit.transform.gameObject}");
-        if (hit.transform.gameObject.CompareTag("Ground"))
+       if (hit.transform.gameObject.CompareTag("Ground"))
         {
 
             Vector3 groundPosition = hit.transform.position;
-            Debug.Log($"{groundPosition}");
 
             InstantiateGroundPrefab(groundPosition + new Vector3(300f, 0f, 0f));  // Création à +300 en X
             InstantiateGroundPrefab(groundPosition + new Vector3(-300f, 0f, 0f)); // Création à -300 en X
