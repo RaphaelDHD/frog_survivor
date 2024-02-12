@@ -100,11 +100,15 @@ public class PlayerManager : MonoBehaviour
 
     public void recoverLife(int percentage)
     {
-        health += (int)(maxHealth * (float)(percentage/100));
+        Debug.Log(health);
+        Debug.Log(percentage);
+        health += (int)((float)maxHealth * (percentage / 100f));
         if (health > maxHealth)
         {
             health = maxHealth;
         }
+
+        Debug.Log(health);
         healthSlider.fillAmount = ((float)health / maxHealth);
         healEffect.SetActive(true);
         StartCoroutine(DisableHealEffect());
@@ -147,7 +151,7 @@ public class PlayerManager : MonoBehaviour
         {
             level++;
             experience = 0;
-            experienceToReachNextLevel = experienceToReachNextLevel * 2;
+            experienceToReachNextLevel = (int)(experienceToReachNextLevel * 1.25f);
             ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
 
             ExperienceText.text = "Level : " + level;
@@ -208,5 +212,6 @@ public class PlayerManager : MonoBehaviour
         maxHealth += value;
         healthContainer.rectTransform.sizeDelta = new Vector2(maxHealth, healthContainer.rectTransform.sizeDelta.y);
         healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth, healthSlider.rectTransform.sizeDelta.y);
+        healthSlider.fillAmount = ((float)health / maxHealth);
     }
 }

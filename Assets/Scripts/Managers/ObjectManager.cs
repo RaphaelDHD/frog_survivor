@@ -6,9 +6,13 @@ public class ObjectManager : MonoBehaviour
 {
     // Singleton
     private static ObjectManager _instance;
-    public static ObjectManager instance { get { return _instance; }} 
+    public static ObjectManager instance { get { return _instance; } }
 
     public GameObject lifePrefab = null;
+
+    [Header("Spawn Time Range")]
+    public float minSpawnTime = 5.0f;
+    public float maxSpawnTime = 10.0f;
 
     private const int minNegativeDistance = -80;
     private const int maxNegativeDistance = -25;
@@ -21,14 +25,14 @@ public class ObjectManager : MonoBehaviour
 
     void Start()
     {
-        if (lifePrefab is not null)
+        if (lifePrefab != null)
         {
-            InvokeRepeating("LifeAppears", Random.Range(5, 11), Random.Range(15, 25));
+            LifeAppears(); // Initially call LifeAppears
         }
     }
 
     void LifeAppears()
-    { 
+    {
         GameObject playerObject = GameObject.Find("Player");
 
         // Choix de la position X positive ou négative
@@ -36,16 +40,18 @@ public class ObjectManager : MonoBehaviour
         {
             positionX = Random.Range(minNegativeDistance, maxNegativeDistance);
         }
-        else {
+        else
+        {
             positionX = Random.Range(minPositiveDistance, maxPositiveDistance);
         }
-        
+
         // Choix de la position Z positive ou négative
         if (Random.Range(0, 2) == 0)
         {
             positionZ = Random.Range(minNegativeDistance, maxNegativeDistance);
         }
-        else {
+        else
+        {
             positionZ = Random.Range(minPositiveDistance, maxPositiveDistance);
         }
 
@@ -57,8 +63,9 @@ public class ObjectManager : MonoBehaviour
         );
 
         Instantiate(lifePrefab, randomPositionAppearance, Quaternion.identity);
+
+        // Set a new random spawn time for the next call
+        float randomSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+        Invoke("LifeAppears", randomSpawnTime);
     }
-
-    
-
 }

@@ -23,7 +23,8 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyWave> enemies = new List<EnemyWave>();
 
     private int currWave = 1;
-    private int waveValue = 10;
+    private int waveValue = 9;
+    private int waveValueActualWave = 9;
     private int enemyCount = 0;
     private bool isWaveInProgress = false;
 
@@ -64,7 +65,8 @@ public class EnemyManager : MonoBehaviour
     private void newWave()
     {
         currWave++;
-        waveValue = currWave * 10;
+        waveValue = waveValueActualWave + (currWave * 5);
+        waveValueActualWave = waveValue;
         waveText.text = "Wave : " + currWave;
         StartCoroutine(SpawnObject());
     }
@@ -90,10 +92,10 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(randSpawnTime);
 
         Vector3 spawnPos = GetRandomEdgePosition();
-        GameObject enemy = getEnemyToSpawn().enemyPrefab;
-        Instantiate(enemy, spawnPos, Quaternion.identity);
+        EnemyWave enemy = getEnemyToSpawn();
+        Instantiate(enemy.enemyPrefab, spawnPos, Quaternion.identity);
         enemyCount++;
-        waveValue -= getEnemyToSpawn().cost;
+        waveValue -= enemy.cost;
 
         if (waveValue > 0)
         {

@@ -9804,6 +9804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e940e8afb021e044b951a51fddef38b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCritical: 0
 --- !u!54 &-8322674469585635781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9850,7 +9851,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 4}
+  m_Size: {x: 4, y: 10, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3307283671839139976
 GameObject:

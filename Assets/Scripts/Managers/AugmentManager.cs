@@ -79,7 +79,18 @@ public class AugmentManager : MonoBehaviour
         while (selectedAugments.Count < 3)
         {
             Augment randomAugment = listAugment[Random.Range(0, listAugment.Count)];
-            if (!selectedAugments.Contains(randomAugment))
+
+            bool typeExists = false;
+            foreach (Augment selected in selectedAugments)
+            {
+                if (selected.augmentType == randomAugment.augmentType)
+                {
+                    typeExists = true;
+                    break;
+                }
+            }
+
+            if (!typeExists)
             {
                 selectedAugments.Add(randomAugment);
             }
@@ -96,7 +107,6 @@ public class AugmentManager : MonoBehaviour
 
     void ProcessAugment(Augment augment)
     {
-        // Example process: just print the augment type and value
         Debug.Log("Processing Augment: Type - " + augment.augmentType + ", Value - " + augment.augmentValue);
 
         switch (augment.augmentType)
@@ -111,7 +121,7 @@ public class AugmentManager : MonoBehaviour
                 PlayerManager.Instance.damage += (augment.augmentValue * PlayerManager.Instance.damage) / 100;
                 break;
             case "attackSpeed":
-                PlayerManager.Instance.attackSpeed -= (augment.augmentValue * PlayerManager.Instance.attackSpeed) / 100;
+                PlayerManager.Instance.attackSpeed -= (augment.augmentValue * 2.5f) / 100;
                 break;
             case "attackCrit":
                 PlayerManager.Instance.criticalChance += augment.augmentValue;
