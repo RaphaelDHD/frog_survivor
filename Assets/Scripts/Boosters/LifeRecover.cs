@@ -14,5 +14,12 @@ public class LifeRecover : MonoBehaviour
             Destroy(gameObject);        
         }
     }
-    
+
+    private void Update()
+    {
+        // make the object rotate on itself
+        transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
+    }
+
+
 }

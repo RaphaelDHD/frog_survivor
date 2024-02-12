@@ -44,6 +44,10 @@ public class PlayerManager : MonoBehaviour
 
     public int speed = 20;
 
+    // effect assets
+    public GameObject healEffect;
+
+
     // make singleton
     private static PlayerManager _instance;
     public static PlayerManager Instance { get { return _instance; } }
@@ -97,8 +101,21 @@ public class PlayerManager : MonoBehaviour
 
     public void recoverLife()
     {
-        if (health < 80) health += 20;
-        else health = 100;
+        // recover 20% of the players max health
+        health += (int)(maxHealth * 0.2);
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        healthSlider.fillAmount = ((float)health / maxHealth);
+        healEffect.SetActive(true);
+        StartCoroutine(DisableHealEffect());
+    }
+
+    private IEnumerator DisableHealEffect()
+    {
+        yield return new WaitForSeconds(4.0f);
+        healEffect.SetActive(false);
     }
 
     public void Death()
