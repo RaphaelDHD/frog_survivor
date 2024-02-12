@@ -40,7 +40,6 @@ public class PlayerManager : MonoBehaviour
 
     public int knockback = 1;
 
-    public int defense = 0;
 
     public int speed = 20;
 
