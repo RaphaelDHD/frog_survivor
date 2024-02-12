@@ -95,6 +95,12 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetTakingDamageAnimation());
     }
 
+    public void recoverLife()
+    {
+        if (health < 80) health += 20;
+        else health = 100;
+    }
+
     public void Death()
     {
         EnemyManager.Instance.killAllEnemy();

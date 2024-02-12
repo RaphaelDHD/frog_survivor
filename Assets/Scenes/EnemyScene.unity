@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -341,10 +341,8 @@ MonoBehaviour:
   spawner: {fileID: 154547755}
   spawnTime: {x: 1, y: 2}
   spawnHeight: 1
-  spawnObject: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
-    type: 3}
   player: {fileID: 1241225794}
-  maxEnemies: 5
+  enemies: []
 --- !u!4 &472542233
 Transform:
   m_ObjectHideFlags: 0
