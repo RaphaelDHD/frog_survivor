@@ -28,6 +28,7 @@ public class DeathMenu : MonoBehaviour
     {
         Destroy(PlayerManager.Instance);
         Destroy(EnemyManager.Instance);
+        Destroy(AugmentManager.Instance);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
@@ -35,6 +36,7 @@ public class DeathMenu : MonoBehaviour
     {
         Destroy(PlayerManager.Instance);
         Destroy(EnemyManager.Instance);
+        Destroy(AugmentManager.Instance);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
 

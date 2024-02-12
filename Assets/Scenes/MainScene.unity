@@ -596,7 +596,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1801226873}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2049265048}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
@@ -2209,6 +2209,7 @@ MonoBehaviour:
   augmentButton1: {fileID: 336788606}
   augmentButton2: {fileID: 680475197}
   augmentButton3: {fileID: 1695731105}
+  joystick: {fileID: 2049265048}
 --- !u!1 &1226527465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,6 +3858,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041555811}
   m_CullTransparentMesh: 1
+--- !u!1 &2049265048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170153791668043269, guid: 0d230cc8be529a542a08cb878ab14b18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801226873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2092354904
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     public int damage = 10;
     public float attackSpeed = 1f;
     public int attackAngle = 45;
-
+    
     public float range = 100f;
 
     public int criticalChance = 1;
@@ -152,6 +152,9 @@ public class PlayerManager : MonoBehaviour
             ExperienceSlider.fillAmount = ((float)experience / experienceToReachNextLevel);
 
             ExperienceText.text = "Level : " + level;
+
+            AugmentManager.Instance.playerLevelledUp();
+
         }
     }
 

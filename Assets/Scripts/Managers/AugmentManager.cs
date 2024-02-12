@@ -21,6 +21,27 @@ public class AugmentManager : MonoBehaviour
     public Button augmentButton2;
     public Button augmentButton3;
 
+    public GameObject joystick;
+
+
+    private static AugmentManager _instance;
+    public static AugmentManager Instance { get { return _instance; } }
+
+
+
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
 
     void Start()
@@ -28,11 +49,65 @@ public class AugmentManager : MonoBehaviour
         augmentUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void playerLevelledUp()
     {
-        
+
+        Time.timeScale = 0;
+
+        joystick.SetActive(false);
+
+        List<Augment> selectedAugments = SelectThreeRandomAugment();
+
+        DisplayAugment(selectedAugments[0], augmentContent1, augmentIcon1);
+        DisplayAugment(selectedAugments[1], augmentContent2, augmentIcon2);
+        DisplayAugment(selectedAugments[2], augmentContent3, augmentIcon3);
+
+        augmentButton1.onClick.AddListener(() => ProcessAugment(selectedAugments[0]));
+        augmentButton2.onClick.AddListener(() => ProcessAugment(selectedAugments[1]));
+        augmentButton3.onClick.AddListener(() => ProcessAugment(selectedAugments[2]));
+
+        augmentUI.SetActive(true);
+
     }
+
+
+    List<Augment> SelectThreeRandomAugment()
+    {
+        List<Augment> selectedAugments = new List<Augment>();
+
+        while (selectedAugments.Count < 3)
+        {
+            Augment randomAugment = listAugment[Random.Range(0, listAugment.Count)];
+            if (!selectedAugments.Contains(randomAugment))
+            {
+                selectedAugments.Add(randomAugment);
+            }
+        }
+
+        return selectedAugments;
+    }
+
+    void DisplayAugment(Augment augment, TextMeshProUGUI contentText, Image iconImage)
+    {
+        contentText.text = augment.augmentContent;
+        iconImage.sprite = augment.augmentIcon;
+    }
+
+    void ProcessAugment(Augment augment)
+    {
+        // Example process: just print the augment type and value
+        Debug.Log("Processing Augment: Type - " + augment.augmentType + ", Value - " + augment.augmentValue);
+
+        joystick.SetActive(true);
+        augmentUI.SetActive(false);  
+        Time.timeScale = 1;
+
+    }
+
+
+
+
 }
 
 
