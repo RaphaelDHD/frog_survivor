@@ -1817,7 +1817,7 @@ MonoBehaviour:
   range: 40
   criticalChance: 1
   knockback: 1
-  speed: 20
+  speed: 40
   healEffect: {fileID: 406209519}
 --- !u!114 &984860432
 MonoBehaviour:
@@ -2145,15 +2145,15 @@ MonoBehaviour:
   listAugment:
   - augmentContent: 'Attack damage : your attacks do 15% more damage'
     augmentIcon: {fileID: 21300000, guid: 90e99a7fde056a4418b9fe16084adb5c, type: 3}
-    augmentType: Attack
+    augmentType: attack
     augmentValue: 15
   - augmentContent: 'Attack damage : your attacks do 10% more damage'
     augmentIcon: {fileID: 21300000, guid: 95052c6b62fb3de4695beaa99f842ac2, type: 3}
-    augmentType: Attack
+    augmentType: attack
     augmentValue: 10
   - augmentContent: 'Attack damage : your attacks do 5% more damage'
     augmentIcon: {fileID: 21300000, guid: 8f28955d92038974a9b04aafaeea79b0, type: 3}
-    augmentType: Attack
+    augmentType: attack
     augmentValue: 5
   - augmentContent: 'Max health : your maximum life increases by 15%'
     augmentIcon: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
@@ -2195,10 +2195,10 @@ MonoBehaviour:
     augmentIcon: {fileID: 21300000, guid: 587503b6015abc741ad5147fff8f4a06, type: 3}
     augmentType: attackCrit
     augmentValue: 5
-  - augmentContent: 'Speed : go 20% faster'
+  - augmentContent: 'Speed : go 10% faster'
     augmentIcon: {fileID: 21300000, guid: 5170e0068a8cf184fb119834fa7ba0f3, type: 3}
     augmentType: speed
-    augmentValue: 20
+    augmentValue: 10
   augmentUI: {fileID: 1725971549}
   augmentIcon1: {fileID: 181229557}
   augmentIcon2: {fileID: 1226527468}

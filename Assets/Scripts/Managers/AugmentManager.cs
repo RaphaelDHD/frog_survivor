@@ -99,6 +99,30 @@ public class AugmentManager : MonoBehaviour
         // Example process: just print the augment type and value
         Debug.Log("Processing Augment: Type - " + augment.augmentType + ", Value - " + augment.augmentValue);
 
+        switch (augment.augmentType)
+        {
+            case "health":
+                PlayerManager.Instance.gainMaxHealth((augment.augmentValue * PlayerManager.Instance.maxHealth) / 100);
+                break;
+            case "heal":
+                PlayerManager.Instance.recoverLife(augment.augmentValue);
+                break;
+            case "attack":
+                PlayerManager.Instance.damage += (augment.augmentValue * PlayerManager.Instance.damage) / 100;
+                break;
+            case "attackSpeed":
+                PlayerManager.Instance.attackSpeed -= (augment.augmentValue * PlayerManager.Instance.attackSpeed) / 100;
+                break;
+            case "attackCrit":
+                PlayerManager.Instance.criticalChance += augment.augmentValue;
+                break;
+            case "speed":
+                PlayerManager.Instance.speed += (float)(augment.augmentValue * PlayerManager.Instance.speed) / 100;
+                break;
+        }
+
+
+
         joystick.SetActive(true);
         augmentUI.SetActive(false);  
         Time.timeScale = 1;

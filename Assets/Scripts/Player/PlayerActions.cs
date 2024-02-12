@@ -10,14 +10,6 @@ public class PlayerActions : MonoBehaviour
     private bool isCooldownActive = false;
     private bool canAttack = true;
 
-   /* private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Enemy") && !isCooldownActive)
-        {
-            PlayerManager.Instance.takeDamage();
-            StartCoroutine(Cooldown());
-        }
-    } */
 
     private void OnCollisionStay(Collision collision)
     {
@@ -63,7 +55,7 @@ public class PlayerActions : MonoBehaviour
 
                 // Disable further attacks for a cooldown period
                 canAttack = false;
-                yield return new WaitForSeconds(1.0f);
+                yield return new WaitForSeconds(PlayerManager.Instance.attackSpeed);
                 canAttack = true;
             }
 
@@ -76,7 +68,12 @@ public class PlayerActions : MonoBehaviour
     {
         if (PlayerManager.Instance.attackPrefab != null)
         {
-            PlayerManager.Instance.spawnAttackPrefab(enemy);
+            // get chance based on a percentage to spawn the attack prefab
+            float chance = Random.Range(0, 100);
+            if (chance <= PlayerManager.Instance.criticalChance) 
+                PlayerManager.Instance.spawnCritAttackPrefab(enemy);
+            else
+                PlayerManager.Instance.spawnAttackPrefab(enemy);
         }
     }
 

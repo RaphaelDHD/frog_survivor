@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     public int maxHealth;
 
     public int damage = 10;
-    public float attackSpeed = 1f;
+    public float attackSpeed = 2.5f;
     public int attackAngle = 45;
     
     public float range = 100f;
@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
     public int knockback = 1;
 
 
-    public int speed = 20;
+    public float speed = 40f;
 
     // effect assets
     public GameObject healEffect;
@@ -98,10 +98,9 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ResetTakingDamageAnimation());
     }
 
-    public void recoverLife()
+    public void recoverLife(int percentage)
     {
-        // recover 20% of the players max health
-        health += (int)(maxHealth * 0.2);
+        health += (int)(maxHealth * (float)(percentage/100));
         if (health > maxHealth)
         {
             health = maxHealth;
@@ -177,6 +176,26 @@ public class PlayerManager : MonoBehaviour
         attack.transform.localScale = new Vector3(attackSize, 1, attackSize);
     }
 
+    public void spawnCritAttackPrefab(GameObject enemy)
+    {
+        if (enemy == null || attackPrefab == null)
+        {
+            return; // Ensure enemy and attackPrefab are valid
+        }
+
+        Vector3 direction = enemy.transform.position - player.transform.position;
+        direction.y = 1f; // Keep the attack level with the ground, remove if not needed
+        Vector3 position = player.transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction.normalized);
+
+        GameObject attack = Instantiate(attackCritickPrefab, position, rotation);
+        Vector3 offset = direction.normalized * range * 0.5f; // Adjust the multiplier based on your preference
+        attack.transform.position = position + offset;
+        float attackSize = range * 0.25f; // Adjust the multiplier based on your preference
+        attack.transform.localScale = new Vector3(attackSize, 1, attackSize);
+    }
+
+
 
 
     public void setAnimation(string animationName, bool value)
@@ -184,5 +203,10 @@ public class PlayerManager : MonoBehaviour
         animator.SetBool(animationName, value);
     }
 
-
+    internal void gainMaxHealth(int value)
+    {
+        maxHealth += value;
+        healthContainer.rectTransform.sizeDelta = new Vector2(maxHealth, healthContainer.rectTransform.sizeDelta.y);
+        healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth, healthSlider.rectTransform.sizeDelta.y);
+    }
 }

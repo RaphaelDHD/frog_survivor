@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovementByJoystick : MonoBehaviour
 {
     public Joystick joystick = null;
-    public float speed = 10.0f;
     public Rigidbody body = null;
     
     void Update()
@@ -13,9 +12,9 @@ public class PlayerMovementByJoystick : MonoBehaviour
         Vector2 inputMovement = joystick.Direction;
 
         body.velocity = new Vector3(
-            inputMovement.x * speed,
+            inputMovement.x * PlayerManager.Instance.speed,
             body.velocity.y,
-            inputMovement.y * speed);
+            inputMovement.y * PlayerManager.Instance.speed);
         if (inputMovement == Vector2.zero)
         {
             PlayerManager.Instance.animator.SetBool("IsWalking", false);

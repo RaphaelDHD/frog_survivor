@@ -7,6 +7,8 @@ public class Attack : MonoBehaviour
 {
     private List<Enemy> collideEnemies = new List<Enemy>();
 
+    public bool isCritical = false;
+
     private void Start()
     {
         Destroy(gameObject, 0.3f) ;
@@ -18,7 +20,14 @@ public class Attack : MonoBehaviour
         if (enemy != null && !collideEnemies.Contains(enemy))
         {
             collideEnemies.Add(enemy);
-            enemy.TakeDamage(PlayerManager.Instance.damage);
+            if (isCritical)
+            {
+                enemy.TakeDamage(PlayerManager.Instance.damage * 2);
+            }
+            else
+            {
+                enemy.TakeDamage(PlayerManager.Instance.damage);
+            }
         }
     }
 }

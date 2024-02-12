@@ -10,7 +10,7 @@ public class LifeRecover : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerManager.Instance.recoverLife();
+            PlayerManager.Instance.recoverLife(20);
             Destroy(gameObject);        
         }
     }
