@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1511067590}
-  spawnTime: {x: 1, y: 2}
+  spawnTime: {x: 0.25, y: 0.75}
   spawnHeight: 1.5
   player: {fileID: 1874428994}
   waveText: {fileID: 691225704}
