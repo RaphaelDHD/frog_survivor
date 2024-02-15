@@ -133,6 +133,10 @@ public class AugmentManager : MonoBehaviour
 
 
 
+        augmentButton1.onClick.RemoveAllListeners();
+        augmentButton2.onClick.RemoveAllListeners();
+        augmentButton3.onClick.RemoveAllListeners();
+
         joystick.SetActive(true);
         augmentUI.SetActive(false);  
         Time.timeScale = 1;
