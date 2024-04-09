@@ -122,6 +122,8 @@ public class AugmentManager : MonoBehaviour
                 break;
             case "attackSpeed":
                 PlayerManager.Instance.attackSpeed -= (augment.augmentValue * 2.5f) / 100;
+                if (PlayerManager.Instance.attackSpeed <= 0f)
+                    PlayerManager.Instance.attackSpeed = 0.1f;
                 break;
             case "attackCrit":
                 PlayerManager.Instance.criticalChance += augment.augmentValue;

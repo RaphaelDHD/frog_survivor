@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -46,6 +47,10 @@ public class PlayerManager : MonoBehaviour
     // effect assets
     public GameObject healEffect;
 
+
+    // sound effect
+    public AudioClip levelUpSound;
+    public AudioClip[] attackSounds;
 
     // make singleton
     private static PlayerManager _instance;
@@ -157,6 +162,7 @@ public class PlayerManager : MonoBehaviour
             ExperienceText.text = "Level : " + level;
 
             AugmentManager.Instance.playerLevelledUp();
+            SoundManager.Instance.PlaySound(levelUpSound, transform);
 
         }
     }
@@ -169,7 +175,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         Vector3 direction = enemy.transform.position - player.transform.position;
-        direction.y = 1f; // Keep the attack level with the ground, remove if not needed
+        direction.y = 1f;
         Vector3 position = player.transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction.normalized);
 
@@ -214,4 +220,12 @@ public class PlayerManager : MonoBehaviour
         healthSlider.rectTransform.sizeDelta = new Vector2(maxHealth, healthSlider.rectTransform.sizeDelta.y);
         healthSlider.fillAmount = ((float)health / maxHealth);
     }
+
+    public void playAttackSound(Transform _transform)
+    {
+        AudioClip clip = attackSounds[Random.Range(0, attackSounds.Length)];
+        SoundManager.Instance.PlaySound(clip, _transform);
+    }
+
+
 }

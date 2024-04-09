@@ -48,9 +48,9 @@ public class PlayerActions : MonoBehaviour
             if (canAttack && IsEnemyInAttackZone())
             {
                 PlayerManager.Instance.setAnimation("IsAttacking", true);
-                yield return new WaitForSeconds(0.40f);
+                //yield return new WaitForSeconds(0.40f);
                 attack(getNearestEnemy());
-                yield return new WaitForSeconds(0.60f);
+                //yield return new WaitForSeconds(0.60f);
                 PlayerManager.Instance.setAnimation("IsAttacking", false);
 
                 // Disable further attacks for a cooldown period
@@ -58,10 +58,9 @@ public class PlayerActions : MonoBehaviour
                 yield return new WaitForSeconds(PlayerManager.Instance.attackSpeed);
                 canAttack = true;
             }
+            yield return new WaitForSeconds(0.01f);
+        }
 
-            // Wait before checking for attacks again
-            yield return new WaitForSeconds(0.1f);
-        }   
     }
 
     private void attack(GameObject enemy)
@@ -70,10 +69,13 @@ public class PlayerActions : MonoBehaviour
         {
             // get chance based on a percentage to spawn the attack prefab
             float chance = Random.Range(0, 100);
-            if (chance <= PlayerManager.Instance.criticalChance) 
+            if (chance <= PlayerManager.Instance.criticalChance)
                 PlayerManager.Instance.spawnCritAttackPrefab(enemy);
             else
+            {
                 PlayerManager.Instance.spawnAttackPrefab(enemy);
+                PlayerManager.Instance.playAttackSound(transform);
+            }
         }
     }
 
@@ -107,7 +109,6 @@ public class PlayerActions : MonoBehaviour
         }
         return nearestEnemy;
     }
-
 
 
 }

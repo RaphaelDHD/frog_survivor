@@ -1,0 +1,295 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5568870347417520076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918366671862697770}
+  - component: {fileID: 8089179686903077554}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1918366671862697770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568870347417520076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7392957415661748266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8089179686903077554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568870347417520076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50, y: 0, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6859199880636799205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7392957415661748266}
+  - component: {fileID: 4710080798489885817}
+  - component: {fileID: 6317284789010764100}
+  - component: {fileID: 4326687468808346584}
+  - component: {fileID: 5430471457883339802}
+  - component: {fileID: 377927250037726192}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7392957415661748266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1918366671862697770}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4710080798489885817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d434c7c363e141438492c353788953a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 5568870347417520076}
+  spawnTime: {x: 0.25, y: 0.75}
+  spawnHeight: 1.5
+  player: {fileID: 0}
+  waveText: {fileID: 0}
+  ennemyText: {fileID: 0}
+  enemies:
+  - enemyPrefab: {fileID: 6016978402703148980, guid: c1bd52a443c580746a6b21729843931e,
+      type: 3}
+    cost: 1
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 06c05a303df57bc44947e6228e06f623,
+      type: 3}
+    cost: 2
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 0d5ec10465c74c64c951fe36f7c2a201,
+      type: 3}
+    cost: 3
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 47d978a041ee7eb4bac8b45338dd847c,
+      type: 3}
+    cost: 10
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 51ff050ea7ab9df44b3ad83b0e6ecfd4,
+      type: 3}
+    cost: 20
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 26128696074af904e83003c6b4d2168e,
+      type: 3}
+    cost: 30
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 886db7c1f7bc992409ef931478af398b,
+      type: 3}
+    cost: 60
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 43ce3ff8a0c70504d9364ded1c8e8948,
+      type: 3}
+    cost: 80
+  - enemyPrefab: {fileID: 6016978402703148980, guid: 39166875632e4934094b5a3f55273d04,
+      type: 3}
+    cost: 100
+--- !u!114 &6317284789010764100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fbe5d452e31cd49b10f6c5c6fdde2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attackPrefab: {fileID: 3153472991145048103, guid: 56a5b01fa920cf34985cfede7f804e1a,
+    type: 3}
+  attackCritickPrefab: {fileID: 1171201465392465800, guid: dcc268a355c4bcf44adc2ef33234ea1d,
+    type: 3}
+  healthContainer: {fileID: 0}
+  healthSlider: {fileID: 0}
+  ExperienceContainer: {fileID: 0}
+  ExperienceSlider: {fileID: 0}
+  ExperienceText: {fileID: 0}
+  deadMenu: {fileID: 0}
+  animator: {fileID: 0}
+  experience: 0
+  level: 1
+  maxLevel: 100
+  health: 100
+  maxHealth: 100
+  damage: 10
+  attackSpeed: 1
+  attackAngle: 45
+  range: 40
+  criticalChance: 1
+  knockback: 1
+  speed: 40
+  healEffect: {fileID: 0}
+  levelUpSound: {fileID: 8300000, guid: 9a113d7c4cbfd0f4fba2781f57b40fad, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 862fc484f164af549a4baf0c8a68e27e, type: 3}
+  - {fileID: 8300000, guid: 375266662d96f5f49ae28790af1b3d0e, type: 3}
+  - {fileID: 8300000, guid: 1ec56f0082d0848459487d2ebfaf3d1c, type: 3}
+  - {fileID: 8300000, guid: 1ec56f0082d0848459487d2ebfaf3d1c, type: 3}
+  - {fileID: 8300000, guid: 8326df8b29c4db34a8e790d298578b47, type: 3}
+  - {fileID: 8300000, guid: fe02b8fada23b4445b474faec19ce5fe, type: 3}
+  - {fileID: 8300000, guid: 11de9ce4206a7744a92b1f227c1fec8e, type: 3}
+  - {fileID: 8300000, guid: 3f766e73013c38f45982972ea33f1021, type: 3}
+--- !u!114 &4326687468808346584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959a9a1934156274d811174d3d381c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePrefab: {fileID: 2993772359274525459, guid: c246a3d5ad968394f85d04a602bdee89,
+    type: 3}
+  minSpawnTime: 40
+  maxSpawnTime: 60
+--- !u!114 &5430471457883339802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3497f8b9d6bcfe045a04c6f6bce0bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listAugment:
+  - augmentContent: 'Attack damage : your attacks do 15% more damage'
+    augmentIcon: {fileID: 21300000, guid: 90e99a7fde056a4418b9fe16084adb5c, type: 3}
+    augmentType: attack
+    augmentValue: 15
+  - augmentContent: 'Attack damage : your attacks do 10% more damage'
+    augmentIcon: {fileID: 21300000, guid: 95052c6b62fb3de4695beaa99f842ac2, type: 3}
+    augmentType: attack
+    augmentValue: 10
+  - augmentContent: 'Attack damage : your attacks do 5% more damage'
+    augmentIcon: {fileID: 21300000, guid: 8f28955d92038974a9b04aafaeea79b0, type: 3}
+    augmentType: attack
+    augmentValue: 5
+  - augmentContent: 'Max health : your maximum life increases by 15%'
+    augmentIcon: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
+    augmentType: health
+    augmentValue: 15
+  - augmentContent: 'Max health : your maximum life increases by 10%'
+    augmentIcon: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
+    augmentType: health
+    augmentValue: 10
+  - augmentContent: 'Max health : your maximum life increases by 5%'
+    augmentIcon: {fileID: 21300000, guid: 87a7c4321fd50514c8e41d6779a071da, type: 3}
+    augmentType: health
+    augmentValue: 5
+  - augmentContent: 'Heal : heal up to full life'
+    augmentIcon: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506, type: 3}
+    augmentType: heal
+    augmentValue: 100
+  - augmentContent: 'Heal : heal up to 75% of your life'
+    augmentIcon: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506, type: 3}
+    augmentType: heal
+    augmentValue: 75
+  - augmentContent: 'Heal : heal up to 50% of your life'
+    augmentIcon: {fileID: 21300000, guid: 7b3876a2b72c44540a4bbd5aaba9e506, type: 3}
+    augmentType: heal
+    augmentValue: 50
+  - augmentContent: 'Attack speed : 15% increase in attack speed'
+    augmentIcon: {fileID: 21300000, guid: 59c8cd2a91ad7f846b9efd79b945c356, type: 3}
+    augmentType: attackSpeed
+    augmentValue: 15
+  - augmentContent: 'Attack speed : 10% increase in attack speed'
+    augmentIcon: {fileID: 21300000, guid: 59c8cd2a91ad7f846b9efd79b945c356, type: 3}
+    augmentType: attackSpeed
+    augmentValue: 10
+  - augmentContent: 'Attack speed : 5% increase in attack speed'
+    augmentIcon: {fileID: 21300000, guid: 59c8cd2a91ad7f846b9efd79b945c356, type: 3}
+    augmentType: attackSpeed
+    augmentValue: 5
+  - augmentContent: 'Critical attack : gain 5% critical attack chance '
+    augmentIcon: {fileID: 21300000, guid: 587503b6015abc741ad5147fff8f4a06, type: 3}
+    augmentType: attackCrit
+    augmentValue: 5
+  - augmentContent: 'Speed : go 10% faster'
+    augmentIcon: {fileID: 21300000, guid: 5170e0068a8cf184fb119834fa7ba0f3, type: 3}
+    augmentType: speed
+    augmentValue: 10
+  augmentUI: {fileID: 0}
+  augmentIcon1: {fileID: 0}
+  augmentIcon2: {fileID: 0}
+  augmentIcon3: {fileID: 0}
+  augmentContent1: {fileID: 0}
+  augmentContent2: {fileID: 0}
+  augmentContent3: {fileID: 0}
+  augmentButton1: {fileID: 0}
+  augmentButton2: {fileID: 0}
+  augmentButton3: {fileID: 0}
+  joystick: {fileID: 0}
+--- !u!114 &377927250037726192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859199880636799205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9fb646c935c6f478d8dc81f786685e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectSource: {fileID: 3068972566805502771, guid: 76cea2238b499c04fba18e0c2d587304,
+    type: 3}

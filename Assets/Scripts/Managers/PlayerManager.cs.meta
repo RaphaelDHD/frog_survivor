@@ -3,7 +3,23 @@ guid: 96fbe5d452e31cd49b10f6c5c6fdde2d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 8550265937725288700, guid: 1d4f7d5018db1cc4ba2f16c0d91f8760,
+      type: 3}
+  - attackPrefab: {fileID: 3153472991145048103, guid: 56a5b01fa920cf34985cfede7f804e1a,
+      type: 3}
+  - attackCritickPrefab: {fileID: 1171201465392465800, guid: dcc268a355c4bcf44adc2ef33234ea1d,
+      type: 3}
+  - healthContainer: {instanceID: 0}
+  - healthSlider: {instanceID: 0}
+  - ExperienceContainer: {instanceID: 0}
+  - ExperienceSlider: {instanceID: 0}
+  - ExperienceText: {instanceID: 0}
+  - deadMenu: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - healEffect: {fileID: 9017484664307500583, guid: 1245b8d2997d5b34fb1637be70a7eb05,
+      type: 3}
+  - levelUpSound: {fileID: 8300000, guid: 9a113d7c4cbfd0f4fba2781f57b40fad, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
